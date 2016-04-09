@@ -91,91 +91,113 @@ console.log(number1 + number2); // 116
 ### Callback
 
 ```js
-function getMessage(callMeWhenFinished) {
-	var message = 'have a great day';
-	callMeWhenFinished(message);
+function sendMessage(message, callMeWhenDone) {
+	setTimeout(function () {
+		console.log(message);
+		callMeWhenDone();
+	}, 1000);
 }
 
-function emphasizeMessage(message, callMeWhenFinished) {
-	message = message.toUpperCase();
-	callMeWhenFinished(message);
-}
-
-function addExclamationMark(message, callMeWhenFinished) {
-	message = message + '!';
-	callMeWhenFinished(message);
-}
-
-// Some people call this 'callback hell':
-getMessage(function (message) {
-	emphasizeMessage(message, function (message) {
-		addExclamationMark(message, function (message) {
-			console.log(message);
+sendMessage('Everything works.', function () {
+	sendMessage('Not everything', function () {
+		sendMessage('works', function () {
+			sendMessage('for you.', function () {});
 		});
 	});
 });
 ```
 
-+ [Example](https://repl.it/CDp5)
++ [Example](https://repl.it/CDqB)
 
 ```js
-function getMessage(callMeWhenFinished) {
-	var message = 'have a great day';
-	callMeWhenFinished(message);
+function sendMessage(message, callMeWhenDone) {
+	setTimeout(function () {
+		console.log(message);
+		callMeWhenDone();
+	}, 1000);
 }
 
-function emphasizeMessage(message, callMeWhenFinished) {
-	message = message.toUpperCase();
-	callMeWhenFinished(message);
+function sendMessage2() {
+	sendMessage('Not everything', sendMessage3);
 }
 
-function addExclamationMark(message, callMeWhenFinished) {
-	message = message + '!';
-	callMeWhenFinished(message);
+function sendMessage3() {
+	sendMessage('works', sendMessage4);
 }
 
-getMessage(function styleMessage(message) {
-	emphasizeMessage(message, function extendMessage(message) {
-		addExclamationMark(message, function logMessage(message) {
-			console.log(message);
-		});
-	});
-});
+function sendMessage4() {
+	sendMessage('for you.', finish);
+}
+
+function finish() {}
+
+sendMessage('Everything works.', sendMessage2);
 ```
 
-+ [Example](https://repl.it/CDp6)
++ [Example](https://repl.it/CDqE)
+
+### Promises
 
 ```js
-function getMessage(callMeWhenFinished) {
-	var message = 'have a great day';
-	callMeWhenFinished(message);
+function sendMessage(message) {
+  return new Promise(function (fulfill, reject) {
+	setTimeout(function () {
+		console.log(message);
+		fulfill();
+	}, 1000);
+  });
 }
 
-function emphasizeMessage(message, callMeWhenFinished) {
-	message = message.toUpperCase();
-	callMeWhenFinished(message);
+function sendMessage2() {
+	sendMessage('Not everything').then(sendMessage3);
 }
 
-function addExclamationMark(message, callMeWhenFinished) {
-	message = message + '!';
-	callMeWhenFinished(message);
+function sendMessage3() {
+	sendMessage('works').then(sendMessage4);
 }
 
-// No 'callback hell':
-
-function styleMessage(message) {
-	emphasizeMessage(message, extendMessage);
+function sendMessage4() {
+	sendMessage('for you.').then(finish);
 }
 
-function extendMessage(message) {
-	addExclamationMark(message, logMessage);
-}
+function finish() {}
 
-function logMessage(message) {
-	console.log(message);
-}
-
-getMessage(styleMessage);
+sendMessage('Everything works.').then(sendMessage2);
 ```
 
-+ [Example](https://repl.it/CDp7)
++ [Example](http://jsbin.com/wujetequzu/edit?js,console)
+
+```js
+function sendMessage(message) {
+  return new Promise(function (fulfill, reject) {
+	setTimeout(function () {
+		console.log(message);
+		fulfill();
+	}, 1000);
+  });
+}
+
+function sendMessage2() {
+	return sendMessage('Not everything');
+}
+
+function sendMessage3() {
+	return sendMessage('works');
+}
+
+function sendMessage4() {
+	return sendMessage('for you.');
+}
+
+function finish() {}
+
+sendMessage('Everything works.')
+  .then(sendMessage2)
+  .then(sendMessage3)
+  .then(sendMessage4)
+  .then(finish);
+```
+
++ [Example](http://jsbin.com/duravipumo/edit?js,console)
+
+
