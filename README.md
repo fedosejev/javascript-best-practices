@@ -32,3 +32,18 @@ console.log(getMessage()) // 'undefined'
 ```
 
 + [Example](https://repl.it/CDlI)
+
+## Equaity
+
+```js
+var message = 0;
+
+if (message) { // Because it's the same as (messsage == true), and 0 is converted to false, so the result is false
+	console.log(message);
+} else {
+	console.log('No message'); // 'No message'
+}
+```
+
++ [Example](https://repl.it/CDoT)
+
