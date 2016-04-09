@@ -74,3 +74,14 @@ logModels('Model S', 'Model X', 'Model ≡'); // SyntaxError: Duplicate paramete
 ```
 
 + [Example](https://repl.it/CDoy)
+
+## Octal numbers
+
+```js
+var number1 = 020; // shortcut for creating octal number
+var number2 = 100;
+
+console.log(number1 + number2); // 116
+```
+
+
