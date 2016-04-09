@@ -38,7 +38,7 @@ console.log(getMessage()) // 'undefined'
 ```js
 var message = 0;
 
-if (message) { // Because it's the same as (messsage == true), and 0 is converted to false, so the result is false
+if (message) { // Because it's the same as (messsage == true), and 0 is converted to false (type coercion), so the result is false
 	console.log(message);
 } else {
 	console.log('No message'); // 'No message'
@@ -46,4 +46,5 @@ if (message) { // Because it's the same as (messsage == true), and 0 is converte
 ```
 
 + [Example](https://repl.it/CDoT)
++ [Learn more about converting values in JavaScript](https://github.com/getify/You-Dont-Know-JS/blob/master/types%20%26%20grammar/ch4.md#converting-values)
 
