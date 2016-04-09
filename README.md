@@ -38,7 +38,7 @@ console.log(getMessage()) // 'undefined'
 ```js
 var message = 0;
 
-if (message) { // Because it's the same as (messsage == true), and 0 is converted to false (type coercion), so the result is false
+if (message) { // Because it's the same as (messsage == true), and 0 is converted to false (type coercion), so the result is false.
 	console.log(message);
 } else {
 	console.log('No message'); // 'No message'
@@ -106,6 +106,7 @@ function addExclamationMark(message, callMeWhenFinished) {
 	callMeWhenFinished(message);
 }
 
+// Some people call this 'callback hell':
 getMessage(function (message) {
 	emphasizeMessage(message, function (message) {
 		addExclamationMark(message, function (message) {
@@ -159,6 +160,8 @@ function addExclamationMark(message, callMeWhenFinished) {
 	message = message + '!';
 	callMeWhenFinished(message);
 }
+
+// No 'callback hell':
 
 function styleMessage(message) {
 	emphasizeMessage(message, extendMessage);
