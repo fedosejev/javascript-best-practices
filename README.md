@@ -86,3 +86,93 @@ console.log(number1 + number2); // 116
 
 + [Example](https://repl.it/CDpA)
 
+## Async Patters
+
+### Callback
+
+```js
+function getMessage(callMeWhenFinished) {
+	var message = 'have a great day';
+	callMeWhenFinished(message);
+}
+
+function emphasizeMessage(message, callMeWhenFinished) {
+	message = message.toUpperCase();
+	callMeWhenFinished(message);
+}
+
+function addExclamationMark(message, callMeWhenFinished) {
+	message = message + '!';
+	callMeWhenFinished(message);
+}
+
+getMessage(function (message) {
+	emphasizeMessage(message, function (message) {
+		addExclamationMark(message, function (message) {
+			console.log(message);
+		});
+	});
+});
+```
+
++ [Example](https://repl.it/CDp5)
+
+```js
+function getMessage(callMeWhenFinished) {
+	var message = 'have a great day';
+	callMeWhenFinished(message);
+}
+
+function emphasizeMessage(message, callMeWhenFinished) {
+	message = message.toUpperCase();
+	callMeWhenFinished(message);
+}
+
+function addExclamationMark(message, callMeWhenFinished) {
+	message = message + '!';
+	callMeWhenFinished(message);
+}
+
+getMessage(function styleMessage(message) {
+	emphasizeMessage(message, function extendMessage(message) {
+		addExclamationMark(message, function logMessage(message) {
+			console.log(message);
+		});
+	});
+});
+```
+
++ [Example](https://repl.it/CDp6)
+
+```js
+function getMessage(callMeWhenFinished) {
+	var message = 'have a great day';
+	callMeWhenFinished(message);
+}
+
+function emphasizeMessage(message, callMeWhenFinished) {
+	message = message.toUpperCase();
+	callMeWhenFinished(message);
+}
+
+function addExclamationMark(message, callMeWhenFinished) {
+	message = message + '!';
+	callMeWhenFinished(message);
+}
+
+function styleMessage(message) {
+	emphasizeMessage(message, extendMessage);
+}
+
+function extendMessage(message) {
+	addExclamationMark(message, logMessage);
+}
+
+function logMessage(message) {
+	console.log(message);
+}
+
+getMessage(styleMessage);
+```
+
++ [Example](https://repl.it/CDp7)
