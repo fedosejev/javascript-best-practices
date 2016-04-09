@@ -48,3 +48,29 @@ if (message) { // Because it's the same as (messsage == true), and 0 is converte
 + [Example](https://repl.it/CDoT)
 + [Learn more about converting values in JavaScript](https://github.com/getify/You-Dont-Know-JS/blob/master/types%20%26%20grammar/ch4.md#converting-values)
 
+## Duplicates
+
+Without 'strict' mode:
+
+```js
+function logModels(model3, model2, model3) {
+	console.log(model3);
+}
+
+logModels('Model S', 'Model X', 'Model ≡'); // 'Model ≡'
+```
+
++ [Example](https://repl.it/CDox)
+
+With 'strict' mode:
+
+```js
+function logModels(model3, model2, model3) {
+	'use strict';
+	console.log(model3);
+}
+
+logModels('Model S', 'Model X', 'Model ≡'); // SyntaxError: Duplicate parameter name not allowed in this context
+```
+
++ [Example](https://repl.it/CDoy)
