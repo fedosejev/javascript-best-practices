@@ -86,7 +86,7 @@ console.log(number1 + number2); // 116
 
 + [Example](https://repl.it/CDpA)
 
-## Async Patters
+## Async Patterns
 
 ### Callback
 
