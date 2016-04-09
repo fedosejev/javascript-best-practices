@@ -20,4 +20,15 @@ var car = brand
 
 + [Example](https://repl.it/CDlC)
 
+```js
+function getMessage() {
+	return
+	{
+		message: 'Oops!'
+	}
+}
 
+console.log(getMessage());
+```
+
++ [Example](https://repl.it/CDlI)
