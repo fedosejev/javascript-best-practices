@@ -11,4 +11,13 @@ var car = brand
 
 + [Example](https://repl.it/CDkz)
 
+```js
+var brand = 'Tesla'
+var car = brand
+
+(function produce() {})() // TypeError: brand is not a function
+```
+
++ [Example](https://repl.it/CDlC)
+
 
