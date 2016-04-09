@@ -28,7 +28,7 @@ function getMessage() {
 	}
 }
 
-console.log(getMessage())
+console.log(getMessage()) // 'undefined'
 ```
 
 + [Example](https://repl.it/CDlI)
