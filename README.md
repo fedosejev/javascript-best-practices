@@ -84,4 +84,5 @@ var number2 = 100;
 console.log(number1 + number2); // 116
 ```
 
++ [Example](https://repl.it/CDpA)
 
